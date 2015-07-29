@@ -1,0 +1,46 @@
+<messaging:emailTemplate subject="Thank you for your Support!" recipientType="Contact" >
+    <messaging:htmlEmailBody >
+        <html>
+        <body>
+            <p>Hello {!recipient.Household_Greeting__c}--</p>
+            <p>Thank you so much for you giving this year. Every gift helps us make a difference in our envrionment...</p>
+            <apex:outputPanel rendered="{!recipient.Total_Gifts_YTD__c>0}">
+                <apex:outputText rendered="{!recipient.Total_Gifts_YTD__c>0}">
+                    <table>
+                        <tr>
+                            <td>Gift Date</td>
+                            <td>Check Number</td>
+                            <td>Check Date</td>
+                            <td>Amount</td>
+                        </tr>
+                </apex:outputText>
+                <apex:repeat value="{!recipient.OpportunityContactRoles}" var="opps" id="theRepeat">
+                    <apex:outputText rendered="{!opps.Role=='Individual Donor'&&opps.Opportunity.IsWon&&opps.Opportunity.Year__c=='2008'}">
+                        <tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!opps.Role=='Individual Donor'&&opps.Opportunity.IsWon&&opps.Opportunity.Year__c=='2008'}">
+                        <td><apex:outputField value="{!opps.Opportunity.CloseDate}"/></td>
+                        <td><apex:outputField value="{!opps.Opportunity.Check_Number__c}"/></td>
+                        <td><apex:outputField value="{!opps.Opportunity.Check_Date__c}"/></td>
+                        <td><apex:outputField value="{!opps.Opportunity.Amount}"/></td>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!opps.Role=='Individual Donor'&&opps.Opportunity.IsWon&&opps.Opportunity.Year__c=='2008'}">
+                        </tr>
+                    </apex:outputText>
+                    
+                </apex:repeat>
+                <apex:outputText rendered="{!recipient.Total_Gifts_YTD__c>0}">
+                    </table>
+                </apex:outputText>
+                
+            </apex:outputPanel>
+            </br></br>
+            We look forward to seeing you in 2009!
+            
+            Best,
+            Steve
+            
+            </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>
