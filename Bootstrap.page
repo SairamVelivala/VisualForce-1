@@ -1,0 +1,66 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0">
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <!-- <apex:includeScript value="{!URLFOR($Resource.Bootstrap, '/js/bootstrap.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, '/css/bootstrap.min.css')}" />
+    <title>VisualForce for Bootstrap</title> -->
+
+
+      </head>
+      <body>
+        <div class="container">
+              <div class="row marketing">
+                    <apex:repeat value="{!sessions} var="r">
+                        <div class="col-lg-4">
+                            <h3><apex:outputField value="{!r.Name__c}"/></h3>
+                            <h5><apex:outputField value="{!r.Status__c}"/></h5>
+                            <div>
+                                <apex:image url="{r.Image_URL__c" height="150px" styleClass="img-responsive" />
+                                <div style="float:right;"><apex:outputField value="{!r.Prep_Time__c}" /></div>
+                                <div style="float:left;"><apex:outputField value="{!r.Star_Rating__c}" /></div>
+                            </div>
+                            <p style="clear:left;float:rigt;"><a class="btn btn-primary" href="#" role="button">View</a> />
+                        </div>
+                    </apex:repeat>
+              </div>
+         </div>
+
+
+
+          <apex:page sidebar="false" showheader="false" standardStylesheets="false" docType="html-5.0" standardController="Session__c" recordSetVar="sessions">
+              <apex:pageBlock>
+                  <apex:pageblockTable value"{!sessions}" var"r">
+                      <apex:column value="{!r.sinadino__Session__c"/>
+                      <apex:column value="{!r.sinadino__Session__c"/>
+                      <apex:column >
+                          <apex:facet name="header">Image</apex:facet>
+                          <apex:image url="{r.Image_URL__c}" height="150"/>
+                      </apex:column>
+                      <apex:column value="{!r.Star_Rating__c}" />
+                  </apex:pageblockTable>
+              </apex:pageBlock>
+
+          <apex:repeat value="{!sessions} var="r">
+              <div class="col-lg-4">
+                  <h3><apex:outputField value="{!r.Name__c}"/></h3>
+                  <h5><apex:outputField value="{!r.Status__c}"/></h5>
+                  <div>
+                      <apex:image url="{r.Image_URL__c" height="150px" styleClass="img-responsive" />
+                      <div style="float:right;"><apex:outputField value="{!r.Prep_Time__c}" /></div>
+                      <div style="float:left;"><apex:outputField value="{!r.Star_Rating__c}" /></div>
+                  </div>
+                  <p style="clear:left;float:rigt;"><a class="btn btn-primary" href="#" role="button">View</a> />
+              </div>
+          </apex:repeat>
+
+
+  </body>
+ </html>
+</apex:page>
